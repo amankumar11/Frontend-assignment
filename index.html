@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Frontend Assignmentr</title>
+    <style>
+      body {
+        text-align: center;
+      }
+
+      #container {
+        margin-top: 20px;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #3498dbbe;
+        color: #fff;
+        font-size: 20px;
+        display: inline-block;
+        margin: 5px;
+        line-height: 100px;
+        text-align: center;
+      }
+
+      .btn {
+        align-items: center;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        height: 30px;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Frontend Assignment</h1>
+    <form id="form">
+      <label for="inputnum">Enter the number of boxes(positive integer):</label>
+      <input type="number" id="inputnum" min="1" required />
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <div id="container"></div>
+    <script>
+      document
+        .getElementById("form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const inputnum = parseInt(
+            document.getElementById("inputnum").value,
+            10
+          );
+          const container = document.getElementById("container");
+          container.innerHTML = "";
+
+          if (isNaN(inputnum) || inputnum <= 0) {
+            alert("Please enter a valid input");
+          } else {
+            for (let i = 1; i <= inputnum; i++) {
+              const box = document.createElement("div");
+              box.className = "box";
+              box.textContent = "Box " + i;
+              container.appendChild(box);
+            }
+          }
+        });
+    </script>
+  </body>
+</html>
